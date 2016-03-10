@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../...iml" filepath="$PROJECT_DIR$/../...iml" />
+      <module fileurl="file://$PROJECT_DIR$/../LibraryDriver/LibraryDriver.iml" filepath="$PROJECT_DIR$/../LibraryDriver/LibraryDriver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TemplateDriver.iml" filepath="$PROJECT_DIR$/TemplateDriver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../LibraryDriver/driverlib/driverlib.iml" filepath="$PROJECT_DIR$/../LibraryDriver/driverlib/driverlib.iml" />
+    </modules>
+  </component>
+</project>
