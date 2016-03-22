@@ -9,9 +9,9 @@ import android.util.Log;
 
 import com.bitalino.sensordroid.MainActivity;
 import com.sensordroid.IMainServiceConnection;
-import com.sensordroid.librarydriver.BITalinoDevice;
-import com.sensordroid.librarydriver.BITalinoException;
-import com.sensordroid.librarydriver.BITalinoFrame;
+import com.bitalino.sensordroid.util.BITalinoDevice;
+import com.bitalino.sensordroid.util.BITalinoException;
+import com.bitalino.sensordroid.util.BITalinoFrame;
 
 import java.io.IOException;
 import java.util.StringTokenizer;

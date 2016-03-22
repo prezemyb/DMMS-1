@@ -1,13 +1,12 @@
 package com.bitalino.sensordroid.Handlers;
 
 import android.os.RemoteException;
-import android.util.Log;
 
 //import com.bitalino.comm.BITalinoFrame;
 import com.bitalino.sensordroid.util.BitalinoTransfer;
 import com.sensordroid.IMainServiceConnection;
-import com.sensordroid.librarydriver.BITalinoFrame;
-import com.sensordroid.librarydriver.JSONHelper;
+import com.bitalino.sensordroid.util.BITalinoFrame;
+import com.bitalino.sensordroid.util.JSONHelper;
 
 public class FrameHandler implements Runnable {
     private final IMainServiceConnection binder;

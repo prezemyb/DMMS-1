@@ -8,7 +8,7 @@ import android.util.Log;
 import com.bitalino.sensordroid.MainActivity;
 import com.bitalino.sensordroid.util.BitalinoTransfer;
 import com.sensordroid.IMainServiceConnection;
-import com.sensordroid.librarydriver.JSONHelper;
+import com.bitalino.sensordroid.util.JSONHelper;
 
 /**
  * Created by sveinpg on 26.02.16.

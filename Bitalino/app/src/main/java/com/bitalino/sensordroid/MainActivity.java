@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends Activity {
+    // Shared Preferences keys
     public static final String sharedKey = "com.sensordroid.bitalino";
     public static final String channelKey = sharedKey + ".channels";
     public static final String macKey = sharedKey + ".mac";
@@ -38,6 +39,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.main_layout);
+
+        // Keep keyboard from poping up at launch
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
 
