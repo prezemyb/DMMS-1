@@ -5,8 +5,12 @@ import android.os.Bundle;
 
 public class MainActivity extends Activity {
     /*
-    TODO: Your activity goes here
-            - for instance save configuration to shared preferences
+    TODO 11: Your activity goes here
+        - Add listeners for layout objects.
+     */
+
+    /*
+        TODO 12: Write configuration to shared preferences
      */
 
     @Override

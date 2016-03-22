@@ -3,7 +3,7 @@ package com.sensordroid.templatedriver.Handlers;
 import android.os.RemoteException;
 
 import com.sensordroid.IMainServiceConnection;
-import com.sensordroid.librarydriver.JSONHelper;
+import com.sensordroid.templatedriver.util.JSONHelper;
 
 import org.json.JSONObject;
 
@@ -16,7 +16,7 @@ public class DataHandler implements Runnable {
     private static int id;
     private static int[] channels;
 
-    // TODO: Change type of "data" to match your format
+    // TODO 8: Change type of "data" to match your format
     public DataHandler(IMainServiceConnection binder, int id, Object[] data, int[] channels) {
         this.binder = binder;
         this.id = id;
@@ -30,7 +30,7 @@ public class DataHandler implements Runnable {
      */
     public void run() {
         /*
-            TODO: Rewrite the collected data from the data format in to an array
+            TODO 9: Rewrite the collected data from the data format in to an array
                   containing the sampled values.
          */
         try {

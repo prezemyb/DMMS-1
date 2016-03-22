@@ -32,10 +32,17 @@ public class StartReceiver extends BroadcastReceiver {
         }
 
         if(driverId != -1) {
+            String serv_action = bundle.getString("SERVICE_ACTION");
+            String serv_name = bundle.getString("SERVICE_NAME");
+            String serv_pack = bundle.getString("SERVICE_PACKAGE");
+
             // Sending start-intent to Service
             Intent service = new Intent(context, MainService.class);
             service.putExtra("ACTION", MainService.START_ACTION);
             service.putExtra("DRIVER_ID", driverId);
+            service.putExtra("SERVICE_ACTION", serv_action);
+            service.putExtra("SERVICE_NAME", serv_name);
+            service.putExtra("SERVICE_PACKAGE", serv_pack);
             context.startService(service);
         }
     }

@@ -18,7 +18,6 @@ public class MainService extends Service {
         TODO: Change the name to the name of your driver
             - This name is the name used in the data packets and when the driver is listed in the main application
      */
-    //public static final String name = "<YOUR DRIVER NAME GOES HERE>";
     public static final String name = R.string.app_name;
 
     private static int id;
@@ -41,28 +40,35 @@ public class MainService extends Service {
         Called when started by intent, as from StartReceiver and StopReceiver
      */
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId){
-        if(intent != null) {
-            String extraString = intent.getStringExtra("ACTION");
-            if (extraString.compareTo(START_ACTION) == 0) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent == null) {
+            return super.onStartCommand(intent, flags, startId);
+        }
+
+        String action = intent.getStringExtra("ACTION");
+        switch (action) {
+            case START_ACTION:
                 this.id = intent.getIntExtra("DRIVER_ID", 0);
-                start();
-            }
-            if (extraString.compareTo(STOP_ACTION) == 0) {
+                start(intent.getStringExtra("SERVICE_ACTION"),
+                        intent.getStringExtra("SERVICE_PACKAGE"),
+                        intent.getStringExtra("SERVICE_NAME"));
+            case STOP_ACTION:
                 stop();
-            }
+            default:
+                Log.d("onStartCommand", "Illegal action string");
         }
         return super.onStartCommand(intent, flags, startId);
     }
 
     /*
         Start data acquisition by binding to the Collector application
+            - binds to service_name, which is located in service_package and is listening for service_action
      */
-    public void start() {
+    public void start(String service_action, String service_package, String service_name) {
         Log.d("bind service", getApplicationContext().toString());
         if(binder == null) {
-            Intent service = new Intent("com.sensordroid.service.START_SERVICE");
-            service.setComponent(new ComponentName("com.sensordroid", "com.sensordroid.MainService"));
+            Intent service = new Intent(service_action);
+            service.setComponent(new ComponentName(service_package, service_name));
             getApplicationContext().bindService(service, serviceConnection, Service.BIND_AUTO_CREATE);
         }
     }
@@ -102,7 +108,7 @@ public class MainService extends Service {
             binder = IMainServiceConnection.Stub.asInterface(iBinder);
 
             // Starts the thread for communication with the device
-            connectionThread = new Thread(new CommunicationHandler(binder, name, id));
+            connectionThread = new Thread(new CommunicationHandler(binder, name, id, getApplicationContext()));
             connectionThread.start();
         }
 

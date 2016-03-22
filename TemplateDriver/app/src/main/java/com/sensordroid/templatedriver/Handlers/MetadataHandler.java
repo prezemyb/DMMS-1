@@ -3,7 +3,7 @@ package com.sensordroid.templatedriver.Handlers;
 import android.os.RemoteException;
 
 import com.sensordroid.IMainServiceConnection;
-import com.sensordroid.librarydriver.JSONHelper;
+import com.sensordroid.templatedriver.util.JSONHelper;
 
 import org.json.JSONObject;
 
@@ -33,7 +33,7 @@ public class MetadataHandler implements Runnable {
     @Override
     public void run() {
         /*
-            TODO: Initialize metadata and save them in the metadata variables above.
+            TODO 13: Initialize metadata and save them in the metadata variables above.
                 - For instance get them from sharedPreferences
          */
 
