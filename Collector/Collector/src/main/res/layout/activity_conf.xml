@@ -82,35 +82,6 @@
             android:background="#787878"
             android:textColor="#ffffff"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Toggle to select TCP/UDP"
-            android:paddingBottom="20dp"
-            android:id="@+id/textView2"
-            android:layout_below="@+id/editPort"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <ToggleButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New ToggleButton"
-            android:id="@+id/toggleTCP"
-            android:layout_below="@+id/textView2"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:textOff="UDP"
-            android:textOn="TCP" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:background="#787878"
-            android:textColor="#ffffff"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Toggle to select File/Network"
             android:paddingBottom="20dp"
             android:id="@+id/textViewFile"
@@ -172,10 +143,9 @@
             android:text="Update package count(UI):"
             android:paddingBottom="20dp"
             android:id="@+id/textUpdateCount"
-            android:layout_below="@+id/toggleTCP"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/checkCount"
-            />
+            android:layout_below="@+id/editPort" />
 
         <CheckBox
             android:layout_width="30dp"

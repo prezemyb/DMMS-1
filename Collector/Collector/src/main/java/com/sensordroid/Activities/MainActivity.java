@@ -9,10 +9,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.PowerManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
@@ -20,12 +18,12 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.sensordroid.MainService;
+import com.sensordroid.RemoteService;
 import com.sensordroid.R;
 
 import java.util.ArrayList;
 
-import static com.sensordroid.MainService.PROVIDER_RESULT;
+import static com.sensordroid.RemoteService.PROVIDER_RESULT;
 
 public class MainActivity extends Activity {
     private final static String START_ACTION = "com.sensordroid.START";
@@ -52,12 +50,12 @@ public class MainActivity extends Activity {
         textView = (TextView)findViewById(R.id.textCount);
         textView.getRootView().setBackgroundColor(Color.parseColor("#FF6A6A"));
 
-        //Add the selected drivers to the driver-list
+        //Add the selected wrappers to the wrapper-list
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         if(b!=null)
         {
-            for (String elem : b.getStringArrayList("DRIVERS")){
+            for (String elem : b.getStringArrayList("WRAPPERS")){
                 list.add(elem);
             }
         }
@@ -70,13 +68,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 textView.getRootView().setBackgroundColor(Color.parseColor("#a4c639"));
-                Log.d("ListDriverActivity", "Broadcasting start-intent...");
+                Log.d("MainActivity", "Broadcasting start-intent...");
 
                 Intent start = new Intent(START_ACTION);
-                start.putStringArrayListExtra("DRIVERS", list);
+                start.putStringArrayListExtra("WRAPPERS", list);
                 start.putExtra("SERVICE_ACTION", "com.sensordroid.service.START_SERVICE");
                 start.putExtra("SERVICE_PACKAGE", "com.sensordroid");
-                start.putExtra("SERVICE_NAME", "com.sensordroid.MainService");
+                start.putExtra("SERVICE_NAME", "com.sensordroid.RemoteService");
                 sendBroadcast(start);
             }
         });
@@ -90,14 +88,15 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 textView.getRootView().setBackgroundColor(Color.parseColor("#FF6A6A"));
 
-                Log.d("ListDriverActivity", "Broadcasting stop-intent...");
+                Log.d("MainActivity", "Broadcasting stop-intent...");
                 Intent stop = new Intent(STOP_ACTION);
+                stop.putExtra("WRAPPERS", list);
                 sendBroadcast(stop);
             }
         });
 
         // Bind to service
-        bindService(new Intent(this, MainService.class), mConnection, Service.BIND_AUTO_CREATE);
+        bindService(new Intent(this, RemoteService.class), mConnection, Service.BIND_AUTO_CREATE);
     }
 
     /*

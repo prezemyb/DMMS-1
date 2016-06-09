@@ -2,5 +2,5 @@
     <string name="app_name">Collector</string>
 
     <string name="action_settings">Settings</string>
-    <string name="some_text">SELECT DRIVERS</string>
+    <string name="some_text">SELECT SENSOR WRAPPERS</string>
 </resources>

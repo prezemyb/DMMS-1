@@ -11,8 +11,14 @@ public class RegisterReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Intent i = new Intent(REGISTER_ACTION);
-        i.putExtra("ID", intent.getStringExtra("ID"));
+        String name = intent.getStringExtra("NAME");
+        String id = intent.getStringExtra("ID");
+
+        if (id == null || name == null) return;
+
+        i.putExtra("NAME", name);
+        i.putExtra("ID", id);
+        Log.d("RegisterReceiver", intent.getStringExtra("ID"));
         context.sendBroadcast(i);
-        Log.d("RegisterReceiver", context.toString());
     }
 }

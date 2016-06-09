@@ -18,7 +18,6 @@ public class ConfigurationActivity extends Activity {
     public static final String sharedKey = "com.sensordroid.collector";
     public static final String ipKey = sharedKey + ".ip";
     public static final String portKey = sharedKey + ".port";
-    public static final String tcpKey = sharedKey + ".tcp";
     public static final String usefileKey = sharedKey + ".usefile";
     public static final String fileNameKey = sharedKey + ".filename";
     public static final String updateCountKey = sharedKey + ".update";
@@ -27,7 +26,6 @@ public class ConfigurationActivity extends Activity {
     private static EditText mEditIP;
     private static EditText mEditPort;
     private static EditText mEditFileName;
-    private static ToggleButton mToggleTCP;
     private static ToggleButton mToggleFile;
     private static CheckBox mCheckUpdate;
     private static Button mButton;
@@ -44,7 +42,6 @@ public class ConfigurationActivity extends Activity {
         String sharedIP = sharedPreferences.getString(ipKey, "vor.ifi.uio.no");
         String sharedName = sharedPreferences.getString(fileNameKey, "datavalues.txt");
         int sharedPort = sharedPreferences.getInt(portKey, 12345);
-        boolean sharedTCP = sharedPreferences.getBoolean(tcpKey, false);
         boolean sharedUseFile = sharedPreferences.getBoolean(usefileKey, false);
         boolean sharedPackCount = sharedPreferences.getBoolean(updateCountKey, false);
 
@@ -52,7 +49,6 @@ public class ConfigurationActivity extends Activity {
         mEditIP = (EditText)findViewById(R.id.editIP);
         mEditPort = (EditText)findViewById(R.id.editPort);
         mEditFileName = (EditText)findViewById(R.id.editName);
-        mToggleTCP = (ToggleButton)findViewById(R.id.toggleTCP);
         mToggleFile = (ToggleButton)findViewById(R.id.toggleFile);
         mCheckUpdate = (CheckBox)findViewById(R.id.checkCount);
         mButton = (Button)findViewById(R.id.buttonNetwork);
@@ -61,7 +57,6 @@ public class ConfigurationActivity extends Activity {
         mEditIP.setText(sharedIP);
         mEditPort.setText("" + sharedPort);
         mEditFileName.setText(sharedName);
-        mToggleTCP.setChecked(sharedTCP);
         mToggleFile.setChecked(sharedUseFile);
         mCheckUpdate.setChecked(sharedPackCount);
 
@@ -74,10 +69,9 @@ public class ConfigurationActivity extends Activity {
                 sharedPreferences.edit().putString(ipKey, mEditIP.getText().toString()).apply();
                 sharedPreferences.edit().putString(fileNameKey, mEditFileName.getText().toString()).apply();
                 sharedPreferences.edit().putInt(portKey, Integer.parseInt(mEditPort.getText().toString())).apply();
-                sharedPreferences.edit().putBoolean(tcpKey, mToggleTCP.isChecked()).apply();
                 sharedPreferences.edit().putBoolean(usefileKey, mToggleFile.isChecked()).apply();
                 sharedPreferences.edit().putBoolean(updateCountKey, mCheckUpdate.isChecked()).apply();
-                Intent intent = new Intent(ConfigurationActivity.this, ListDriverActivity.class);
+                Intent intent = new Intent(ConfigurationActivity.this, ListActivity.class);
                 startActivity(intent);
             }
         });
