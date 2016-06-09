@@ -9,3 +9,6 @@ Driver application tailored for the BITalino sensorboard
 
 ## TemplateDriver application
 A template project of a driver application, marked with "TODO" where the code needs to be modified.
+
+## Python scripts
+Various scripts for receiving and processing the data forwarded by the Collector application. 
